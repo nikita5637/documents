@@ -1,0 +1,17 @@
+#adding one document
+curl -v -X POST --data '{"documents":[
+{"name": "name1", "date": "20200101", "number": 1, "sum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"},
+{"name": "name2", "date": "20200202", "number": 2, "sum": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"},
+{"name": "name3", "date": "20200303", "number": 3, "sum": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"},
+{"name": "name4", "date": "20200404", "number": 4, "sum": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"},
+{"name": "name5", "date": "20200505", "number": 5, "sum": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"},
+{"name": "name6", "date": "20200606", "number": 6, "sum": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"},
+{"name": "name7", "date": "20200707", "number": 7, "sum": "0000000000000000000000000000000000000000000000000000000000000000"},
+{"name": "name8", "date": "20200808", "number": 8, "sum": "1111111111111111111111111111111111111111111111111111111111111111"},
+{"name": "name9", "date": "20200909", "number": 9, "sum": "2222222222222222222222222222222222222222222222222222222222222222"},
+{"name": "name10", "date": "20201010", "number": 10, "sum": "3333333333333333333333333333333333333333333333333333333333333333"}
+]}' 172.20.1.2/api/document/set
+
+
+#get all documents
+curl -v -X GET 172.20.1.2/api/document/get

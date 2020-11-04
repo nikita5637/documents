@@ -1,0 +1,15 @@
+#Database config
+db_addr = "172.20.1.3" #rewrite by ENV "POSTGRESQL_IP_ADDRESS"
+db_port = 5432 #rewrite by ENV "POSTGRESQL_PORT"
+db_user = "postgres" #rewrite by ENV "POSTGRESQL_USER"
+db_password = "password" #rewrite by ENV "POSTGRESQL_PASSWORD"
+db_name = "docs" #rewrite by ENV "POSTGRESQL_DBNAME"
+migrations_dir = "/go/src/docs/internal/migrations/" #rewrite by ENV "POSTGRESQL_MIGRATIONS_DIR"
+
+#Request config
+#min_docs_per_request = 1 #100 max
+#max_docs_per_request = 10 #100 max
+
+#Server config
+#bind_addr = ":80" #rewrite by ENV "DOCS_BIND_ADDR"
+log_level = "debug" #rewrite by ENV "DOCS_LOG_LEVEL", default "info"
