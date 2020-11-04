@@ -4,8 +4,8 @@ services:
         build: .
         depends_on:
             - "db"
-        stdin_open: true
-        tty: true
+        stdin_open: false
+        tty: false
         networks: 
             subnet:
                 ipv4_address: 172.20.1.2

@@ -34,8 +34,30 @@ func newServer(config *Config, logger *logrus.Logger, store store.Store) *Server
 }
 
 func (s *Server) configureRouter() {
+	s.router.Use(s.logRequest)
 	s.router.HandleFunc("/api/document/set", s.handleSet()).Methods(http.MethodPost)
 	s.router.HandleFunc("/api/document/get", s.handleGet()).Methods(http.MethodGet)
+}
+
+func (s *Server) logRequest(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		logger := s.logger.WithFields(logrus.Fields{
+			"remote_addr": r.RemoteAddr,
+		})
+		logger.Infof("receive request %s %s", r.RequestURI, r.Method)
+
+		newResponseWriter := &responseWriter{
+			w,
+			http.StatusOK,
+		}
+
+		next.ServeHTTP(newResponseWriter, r)
+		if newResponseWriter.code == http.StatusOK {
+			logger.Infof("completed code = %d", newResponseWriter.code)
+		} else {
+			logger.Warnf("completed code = %d", newResponseWriter.code)
+		}
+	})
 }
 
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
